@@ -8,24 +8,49 @@ namespace Custom_List
 {
     public class CustomList<T>
     {
-        T[] list;
-        int capacity;
+        public int count;
+        public int Count
+        {
+            get
+            {
+                return count;
+            }
+            //is set not required
+            //set
+            //{
+            //    count = value;
+            //}
+        }
+        public T[] array;
+        public int capacity;
+        public int Capacity;
         public CustomList()
         {
+            count = 0;
             capacity = 5;
-            list = new T[capacity];
+            array = new T[capacity];
         }
         
         public void Add(T item)
         {
-            //count formula to be devised down the road
-            if (list.Count % 5 == 0)
+            array[count] = item;
+            count++;
+            if (count == capacity)
             {
-                capacity += 5;
+                IncreaseCapacity();
             }
-           
-        
         }
+        public void IncreaseCapacity()
+        {
+                capacity += 5;
+                T[] placeholder = array;
+                array = new T[capacity];
+                for (int i = 0; i < count; i++)
+                {
+                    array[i] = placeholder[i];
+                }
+        }
+        
         
     }
 }

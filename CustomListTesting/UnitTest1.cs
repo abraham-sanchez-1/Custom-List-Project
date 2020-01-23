@@ -19,7 +19,7 @@ namespace CustomListTesting
             customList.Add(value);
 
             //Assert
-            Assert.AreEqual(expected, customList.Capacity());
+            Assert.AreEqual(expected, customList.capacity);
         }
         [TestMethod]
         public void AddFourInt_CheckCapacity_ReturnCapacity()
@@ -38,7 +38,7 @@ namespace CustomListTesting
             customList.Add(fourthValue);
 
             //Assert
-            Assert.AreEqual(expected, customList.Capacity());
+            Assert.AreEqual(expected, customList.capacity);
         }
         [TestMethod]
         public void AddFiveInt_CheckCapacity_ReturnCapacity()
@@ -50,7 +50,7 @@ namespace CustomListTesting
             int thirdValue = 5;
             int fourthValue = 7;
             int fifthValue = 9;
-            int expected = 5;
+            int expected = 10;
             //Act
             customList.Add(firstValue);
             customList.Add(secondValue);
@@ -59,7 +59,7 @@ namespace CustomListTesting
             customList.Add(fifthValue);
 
             //Assert
-            Assert.AreEqual(expected, customList.Capacity());
+            Assert.AreEqual(expected, customList.capacity);
         }
         [TestMethod]
         public void AddSixInt_CheckCapacity_ReturnCapacity()
@@ -82,7 +82,7 @@ namespace CustomListTesting
             customList.Add(sixthValue);
 
             //Assert
-            Assert.AreEqual(expected, customList.Capacity());
+            Assert.AreEqual(expected, customList.capacity);
         }
         //Second section of Add method: Checks that each index holds correct number based on qty of ints added
         [TestMethod]
@@ -96,7 +96,7 @@ namespace CustomListTesting
             customList.Add(3);
 
             //Assert
-            Assert.AreEqual(value, customList[0]);
+            Assert.AreEqual(value, customList.array[0]);
         }
         [TestMethod]
         public void AddTwoInt_CheckIndexOne_ReturnIndexOne()
@@ -112,7 +112,7 @@ namespace CustomListTesting
             customList.Add(secondValue);
 
             //Assert
-            Assert.AreEqual(expectedValue, customList[1]);
+            Assert.AreEqual(expectedValue, customList.array[1]);
         }
         [TestMethod]
         public void AddThreeInt_CheckIndexOne_ReturnIndexOne()
@@ -130,7 +130,7 @@ namespace CustomListTesting
             customList.Add(thirdValue);
 
             //Assert
-            Assert.AreEqual(expectedValue, customList[1]);
+            Assert.AreEqual(expectedValue, customList.array[1]);
         }
         [TestMethod]
         public void AddThreeInt_CheckIndexTwo_ReturnIndexTwo()
@@ -148,7 +148,7 @@ namespace CustomListTesting
             customList.Add(thirdValue);
 
             //Assert
-            Assert.AreEqual(expectedValue, customList[2]);
+            Assert.AreEqual(expectedValue, customList.array[2]);
         }
         [TestMethod]
         public void AddSixInt_CheckIndexFour_ReturnIndexFour()
@@ -172,7 +172,7 @@ namespace CustomListTesting
             customList.Add(sixthValue);
 
             //Assert
-            Assert.AreEqual(expectedValue, customList[4]);
+            Assert.AreEqual(expectedValue, customList.array[4]);
         }
         [TestMethod]
         public void AddSixInt_CheckIndexFive_ReturnIndexFive()
@@ -196,7 +196,7 @@ namespace CustomListTesting
             customList.Add(sixthValue);
 
             //Assert
-            Assert.AreEqual(expectedValue, customList[5]);
+            Assert.AreEqual(expectedValue, customList.array[5]);
         }
         //Third seciton of Add method: Checks that count is being accurate regardless of how many pieces of data are added
         [TestMethod]
@@ -210,7 +210,7 @@ namespace CustomListTesting
             customList.Add(value);
 
             //Assert
-            Assert.AreEqual(expectedValue, customList.Count();
+            Assert.AreEqual(expectedValue, customList.count);
         }
         [TestMethod]
         public void AddTwoInt_CheckCount_ReturnCount()
@@ -225,7 +225,7 @@ namespace CustomListTesting
             customList.Add(secondValue);
 
             //Assert
-            Assert.AreEqual(expectedValue, customList.Count();
+            Assert.AreEqual(expectedValue, customList.count);
         }
         [TestMethod]
         public void AddFiveInt_CheckCount_ReturnCount()
@@ -246,7 +246,7 @@ namespace CustomListTesting
             customList.Add(fifthValue);
 
             //Assert
-            Assert.AreEqual(expectedValue, customList.Count);
+            Assert.AreEqual(expectedValue, customList.count);
         }
         [TestMethod]
         public void AddSixInt_CheckCount_ReturnCount()
@@ -269,7 +269,7 @@ namespace CustomListTesting
             customList.Add(sixthValue);
 
             //Assert
-            Assert.AreEqual(expectedValue, customList.Count();
+            Assert.AreEqual(expectedValue, customList.count);
         }
         [TestMethod]
         public void TestMethod3()
