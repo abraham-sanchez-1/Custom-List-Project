@@ -21,17 +21,57 @@ namespace CustomListTesting
             Assert.AreEqual(value, customList[0]);
         }
         [TestMethod]
-        public void AddNoInt_CheckZeroIndex_ReturnIndex0()
+        public void AddOneInt_CheckCapacity_ReturnCapacity()
         {
             //Arrange Check to see that list is empty
             CustomList<int> customList = new CustomList<int>();
-            int value = 3;
-
+            int value = 1;
+            int expected = 5;
             //Act
             customList.Add(value);
 
             //Assert
-            Assert.AreEqual(value, customList[0]);
+            Assert.AreEqual(expected, customList.Capacity());
+        }
+        [TestMethod]
+        public void AddFourInt_CheckCapacity_ReturnCapacity()
+        {
+            //Arrange Check to see that list is empty
+            CustomList<int> customList = new CustomList<int>();
+            int firstValue = 1;
+            int secondValue = 3;
+            int thirdValue = 5;
+            int fourthValue = 7;
+            int expected = 5;
+            //Act
+            customList.Add(firstValue);
+            customList.Add(secondValue);
+            customList.Add(thirdValue);
+            customList.Add(fourthValue);
+
+            //Assert
+            Assert.AreEqual(expected, customList.Capacity());
+        }
+        [TestMethod]
+        public void AddFiveInt_CheckCapacity_ReturnCapacity()
+        {
+            //Arrange Check to see that list is empty
+            CustomList<int> customList = new CustomList<int>();
+            int firstValue = 1;
+            int secondValue = 3;
+            int thirdValue = 5;
+            int fourthValue = 7;
+            int fifthValue = 9;
+            int expected = 10;
+            //Act
+            customList.Add(firstValue);
+            customList.Add(secondValue);
+            customList.Add(thirdValue);
+            customList.Add(fourthValue);
+            customList.Add(fifthValue);
+
+            //Assert
+            Assert.AreEqual(expected, customList.Capacity());
         }
         [TestMethod]
         public void AddTwoInt_CheckIndexOne_ReturnIndexOne()
