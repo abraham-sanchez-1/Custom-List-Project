@@ -16,9 +16,13 @@ namespace Custom_List
             listOfNumbers.Add(6);
             listOfNumbers.Add(7);
             listOfNumbers.Remove(5);
-            
-            
-           
+            listOfNumbers.Add(5);
+            listOfNumbers.Add(20);
+            listOfNumbers.Add(5);
+            listOfNumbers.Add(20);
+
+
+
 
         }
     }

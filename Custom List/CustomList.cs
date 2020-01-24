@@ -116,6 +116,18 @@ namespace Custom_List
             }
 
         }
+        public override string ToString()
+        {
+            
+            StringBuilder newString = new StringBuilder();
+            for (int i = 0; i < count; i++)
+            {
+                newString.Append(array[i]);
+            }
+            
+            return newString.ToString();
+
+        }
         //C# indexer
 
 

@@ -355,7 +355,7 @@ namespace CustomListTesting
             //Assert
             Assert.AreEqual(expectedValue, actualValue);
         }
-        //Third Section of Remove method: Checking to see if newly empty spot goes back to throw exception as intended
+        //Third Section of Remove method: Checking to see if newly empty spot goes back to throw exception as intended as well as negative figures
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void RemoveOneInt_CheckIndexTwo_ThrowException()
@@ -377,6 +377,26 @@ namespace CustomListTesting
             //Assert
             //No assert, right?
            
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void CheckIneligibleIndex_CheckNegativeIndex_ThrowException()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+           
+            int actualValue;
+
+            //Act
+            customList.Add(3);
+            customList.Add(1);
+            customList.Add(2);
+            customList.Remove(2);
+            actualValue = customList[-1];
+
+            //Assert
+            //No assert, right?
+
         }
         //Fourth Section of Remove method: Checking to see that count changes with remove
         [TestMethod]
@@ -447,7 +467,39 @@ namespace CustomListTesting
             Assert.AreEqual(expectedValue, value);
         }
         [TestMethod]
-        public void TestMethod4()
+        public void ToStringStringList_ReturnString()
+        {
+            //Arrange
+            CustomList<string> customList = new CustomList<string>();
+            string expectedValue = "Abe";
+            string actual;
+            //Act
+            customList.Add("A");
+            customList.Add("b");
+            customList.Add("e");
+            actual = customList.ToString();
+
+            //Assert
+            Assert.AreEqual(expectedValue, actual);
+        }
+        [TestMethod]
+        public void ToStringIntList_ReturnString()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            string expectedValue = "123";
+            string actual;
+            //Act
+            customList.Add(1);
+            customList.Add(2);
+            customList.Add(3);
+            actual = customList.ToString();
+
+            //Assert
+            Assert.AreEqual(expectedValue, actual);
+        }
+        [TestMethod]
+        public void TestMethodTemplate()
         {
             //Arrange
 
