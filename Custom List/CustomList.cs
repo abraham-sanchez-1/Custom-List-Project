@@ -8,22 +8,27 @@ namespace Custom_List
 {
     public class CustomList<T>
     {
-        public int count;
+        private int count;
         public int Count
         {
             get
             {
                 return count;
             }
-            //is set not required
-            //set
-            //{
-            //    count = value;
-            //}
         }
         public T[] array;
-        public int capacity;
-        public int Capacity;
+        private int capacity;
+        public int Capacity
+        {
+            get
+            {
+                return capacity;
+            }
+            set
+            {
+                capacity = value;
+            }
+        }
         public CustomList()
         {
             count = 0;
@@ -50,6 +55,11 @@ namespace Custom_List
                     array[i] = placeholder[i];
                 }
         }
+        public void Remove(T item)
+        {
+
+        }
+        //C# indexer
         
         
     }
