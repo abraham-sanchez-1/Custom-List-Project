@@ -23,7 +23,7 @@ namespace Custom_List
         {
             get
             {
-                if (i>count || i<0)
+                if (i>count-1 || i<0)
                 {
                     throw new System.ArgumentOutOfRangeException();
                 }
