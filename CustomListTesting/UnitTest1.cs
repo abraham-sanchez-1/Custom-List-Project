@@ -96,7 +96,7 @@ namespace CustomListTesting
             customList.Add(3);
 
             //Assert
-            Assert.AreEqual(value, customList.array[0]);
+            Assert.AreEqual(value, customList[0]);
         }
         [TestMethod]
         public void AddTwoInt_CheckIndexOne_ReturnIndexOne()
@@ -112,7 +112,7 @@ namespace CustomListTesting
             customList.Add(secondValue);
 
             //Assert
-            Assert.AreEqual(expectedValue, customList.array[1]);
+            Assert.AreEqual(expectedValue, customList[1]);
         }
         [TestMethod]
         public void AddThreeInt_CheckIndexOne_ReturnIndexOne()
@@ -130,7 +130,7 @@ namespace CustomListTesting
             customList.Add(thirdValue);
 
             //Assert
-            Assert.AreEqual(expectedValue, customList.array[1]);
+            Assert.AreEqual(expectedValue, customList[1]);
         }
         [TestMethod]
         public void AddThreeInt_CheckIndexTwo_ReturnIndexTwo()
@@ -148,7 +148,7 @@ namespace CustomListTesting
             customList.Add(thirdValue);
 
             //Assert
-            Assert.AreEqual(expectedValue, customList.array[2]);
+            Assert.AreEqual(expectedValue, customList[2]);
         }
         [TestMethod]
         public void AddSixInt_CheckIndexFour_ReturnIndexFour()
@@ -172,7 +172,7 @@ namespace CustomListTesting
             customList.Add(sixthValue);
 
             //Assert
-            Assert.AreEqual(expectedValue, customList.array[4]);
+            Assert.AreEqual(expectedValue, customList[4]);
         }
         [TestMethod]
         public void AddSixInt_CheckIndexFive_ReturnIndexFive()
@@ -196,7 +196,7 @@ namespace CustomListTesting
             customList.Add(sixthValue);
 
             //Assert
-            Assert.AreEqual(expectedValue, customList.array[5]);
+            Assert.AreEqual(expectedValue, customList[5]);
         }
         //Third seciton of Add method: Checks that count is being accurate regardless of how many pieces of data are added
         [TestMethod]
@@ -329,7 +329,7 @@ namespace CustomListTesting
             customList.Add(secondValue);
             customList.Add(thirdValue);
             customList.Remove(secondValue);
-            actualValue = customList.array[1];
+            actualValue = customList[1];
 
             //Assert
             Assert.AreEqual(expectedValue, actualValue);
@@ -350,7 +350,7 @@ namespace CustomListTesting
             customList.Add(secondValue);
             customList.Add(thirdValue);
             customList.Remove(secondValue);
-            actualValue = customList.array[0];
+            actualValue = customList[0];
 
             //Assert
             Assert.AreEqual(expectedValue, actualValue);
@@ -372,7 +372,7 @@ namespace CustomListTesting
             customList.Add(secondValue);
             customList.Add(thirdValue);
             customList.Remove(secondValue);
-            actualValue = customList.array[2];
+            actualValue = customList[2];
 
             //Assert
             //No assert, right?

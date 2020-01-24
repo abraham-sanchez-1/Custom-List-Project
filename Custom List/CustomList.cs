@@ -16,7 +16,36 @@ namespace Custom_List
                 return count;
             }
         }
-        public T[] array;
+        //creation of array
+        private T[] array;
+        //creation of indexer
+        public T this[int i]
+        {
+            get
+            {
+                if (i>count || i<0)
+                {
+                    throw new System.ArgumentOutOfRangeException();
+                }
+                else
+                {
+                    return array[i];
+                }
+            }
+            set
+            {
+
+                if (i > count || i < 0)
+                {
+                    throw new System.ArgumentOutOfRangeException();
+                }
+                else
+                {
+                    array[i] = value;
+                }
+            }
+        }
+           
         private int capacity;
         public int Capacity
         {
@@ -47,7 +76,7 @@ namespace Custom_List
         }
         public void IncreaseCapacity()
         {
-                capacity += 5;
+                capacity *= 5;
                 T[] placeholder = array;
                 array = new T[capacity];
                 for (int i = 0; i < count; i++)
@@ -55,12 +84,29 @@ namespace Custom_List
                     array[i] = placeholder[i];
                 }
         }
-        public void Remove(T item)
+        public bool Remove(T item)
         {
-
+            for (int i = 0; i < count; i++)
+            {
+                if (array[i].Equals(item))
+                {
+                    Concatenate(i);
+                }
+                
+            }
+            return false;
+        }
+        public void Concatenate(int indexToBeRemoved)
+        {
+            T[] placeholder = array;
+            array = new T[capacity];
+            for (int i = 0; i < count; i++)
+            {
+                array[i] = placeholder[i];
+            }
         }
         //C# indexer
-        
-        
+
+
     }
 }
