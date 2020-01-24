@@ -76,7 +76,7 @@ namespace Custom_List
         }
         public void IncreaseCapacity()
         {
-                capacity *= 5;
+                capacity *= 2;
                 T[] placeholder = array;
                 array = new T[capacity];
                 for (int i = 0; i < count; i++)
@@ -91,6 +91,8 @@ namespace Custom_List
                 if (array[i].Equals(item))
                 {
                     Concatenate(i);
+                    count -= 1;
+                    return true;
                 }
                 
             }
@@ -98,12 +100,21 @@ namespace Custom_List
         }
         public void Concatenate(int indexToBeRemoved)
         {
-            T[] placeholder = array;
-            array = new T[capacity];
+            T[] firstPlaceholder = new T[capacity];
+            for (int j = 0; j < indexToBeRemoved; j++)
+            {
+                firstPlaceholder[j] = array[j];
+            }
+            int upperLimit = Count - 1;
+            for (int i = indexToBeRemoved; i < upperLimit; i++)
+            {
+                firstPlaceholder[i] = array[i+1];
+            }
             for (int i = 0; i < count; i++)
             {
-                array[i] = placeholder[i];
+                array[i] = firstPlaceholder[i];
             }
+
         }
         //C# indexer
 
