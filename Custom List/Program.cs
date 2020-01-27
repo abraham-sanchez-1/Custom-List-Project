@@ -10,18 +10,30 @@ namespace Custom_List
     {
         static void Main(string[] args)
         {
-            CustomList<int> listOfNumbers = new CustomList<int>();
-            listOfNumbers.Add(4);
-            listOfNumbers.Add(5);
-            listOfNumbers.Add(6);
-            listOfNumbers.Add(7);
+            CustomList<int> listOfNumbers = new CustomList<int>() { 4,5,6,7,5,20,5,20};
             listOfNumbers.Remove(5);
-            listOfNumbers.Add(5);
-            listOfNumbers.Add(20);
-            listOfNumbers.Add(5);
-            listOfNumbers.Add(20);
 
 
+            foreach (var number in listOfNumbers)
+            {
+                Console.WriteLine(number);
+            }
+
+            CustomList<int> secondList = new CustomList<int> { 5, 20 };
+            CustomList<int> newlist = new CustomList<int>();
+            newlist = listOfNumbers - secondList;
+
+            Console.WriteLine("\nData Split\n");
+
+
+
+            foreach (var number in newlist)
+            {
+                Console.WriteLine(number);
+            }
+
+
+            Console.ReadLine();
 
 
         }

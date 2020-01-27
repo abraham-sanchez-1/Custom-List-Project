@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Custom_List
 {
-    public class CustomList<T> /*:IEnumerable */
+    public class CustomList<T> : IEnumerable
     {
         private int count;
         public int Count
@@ -105,12 +105,15 @@ namespace Custom_List
             }
             for (int i = indexToBeRemoved; i < count-1; i++)
             {
+                
                 placeHolder.Add(array[i+1]);
             }
             for (int i = 0; i < placeHolder.count; i++)
             {
+                array[i + 1] = default;
                 array[i] = placeHolder[i];
             }
+            
         }
         public override string ToString()
         {       
@@ -154,13 +157,13 @@ namespace Custom_List
 
         }
         //iterator
-        //public IEnumerator GetEnumerator()
-        //{
-        //    for (int index = 0; index < array.Count(); index++)
-        //    {
-
-        //    }
-        //}
+        public IEnumerator GetEnumerator()
+        {
+            for (int index = 0; index < array.Count(); index++)
+            {
+                yield return array[index];
+            }
+        }
 
 
     }
