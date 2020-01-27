@@ -100,19 +100,19 @@ namespace Custom_List
         }
         public void Concatenate(int indexToBeRemoved)
         {
-            T[] firstPlaceholder = new T[capacity];
+            T[] placeholder = new T[capacity];
             for (int j = 0; j < indexToBeRemoved; j++)
             {
-                firstPlaceholder[j] = array[j];
+                placeholder[j] = array[j];
             }
             int upperLimit = Count - 1;
             for (int i = indexToBeRemoved; i < upperLimit; i++)
             {
-                firstPlaceholder[i] = array[i+1];
+                placeholder[i] = array[i+1];
             }
             for (int i = 0; i < count; i++)
             {
-                array[i] = firstPlaceholder[i];
+                array[i] = placeholder[i];
             }
 
         }
@@ -126,6 +126,21 @@ namespace Custom_List
             }
             
             return newString.ToString();
+
+        }
+        public static CustomList<T>  operator +(CustomList<T> listOne, CustomList<T> listTwo) 
+        {
+            CustomList<T> newList = new CustomList<T>();
+            for (int i = 0; i < listOne.count; i++)
+            {
+                newList[i] = listOne[i];
+            }
+            for (int i = 0; i < listTwo.count ; i++)
+            {
+
+            }
+
+            return newList;
 
         }
         //C# indexer

@@ -466,6 +466,7 @@ namespace CustomListTesting
             //Assert
             Assert.AreEqual(expectedValue, value);
         }
+        //First Section of ToString method: Check to make sure list made of strings and integers concatenates properly
         [TestMethod]
         public void ToStringStringList_ReturnString()
         {
@@ -497,6 +498,37 @@ namespace CustomListTesting
 
             //Assert
             Assert.AreEqual(expectedValue, actual);
+        }
+        //First Section of plus operator override: Check to make sure new list contains int list 123456
+        [TestMethod]
+        public void AddTwoIntLists_ReturnConcatenatedList()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            CustomList<int> customList2 = new CustomList<int>();
+            CustomList<int> newList = new CustomList<int>();
+            CustomList<int> expectedList = new CustomList<int>();
+            
+            
+            int actual;
+            //Act
+            customList.Add(1);
+            customList.Add(2);
+            customList.Add(3); 
+            customList2.Add(4);
+            customList2.Add(5);
+            customList2.Add(6);
+            expectedList.Add(1);
+            expectedList.Add(2);
+            expectedList.Add(3);
+            expectedList.Add(4);
+            expectedList.Add(5);
+            expectedList.Add(6);
+
+            newList = customList + customList2;
+
+            //Assert
+            Assert.AreEqual(expectedList, newList);
         }
         [TestMethod]
         public void TestMethodTemplate()
