@@ -1,4 +1,5 @@
 ﻿ using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Custom_List
 {
-    public class CustomList<T> //:IEnumberable use system:collections not generic
+    public class CustomList<T> /*:IEnumerable */
     {
         private int count;
         public int Count
@@ -140,17 +141,26 @@ namespace Custom_List
             CustomList<T> newList = new CustomList<T>();
             for (int i = 0; i < listOne.count; i++)
             {
-                newList.Add(listOne[i]);
+                for (int j = 0; j < listTwo.count; j++)
+                {
+                    listOne.Remove(listTwo[j]);
+                //    if (listOne[i].Equals(listTwo[j]))
+                //    {
+                //        listOne.Remove(listTwo[j]);
+                //    }
+                }
             }
-            for (int i = 0; i < listTwo.count; i++)
-            {
-                newList.Add(listTwo[i]);
-            }
-
-            return newList;
+            return listOne;
 
         }
-        //C# indexer
+        //iterator
+        //public IEnumerator GetEnumerator()
+        //{
+        //    for (int index = 0; index < array.Count(); index++)
+        //    {
+
+        //    }
+        //}
 
 
     }

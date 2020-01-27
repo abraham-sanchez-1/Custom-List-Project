@@ -638,7 +638,7 @@ namespace CustomListTesting
         }
         //Third Section of subtract operator override: Removal of more than one figure to make sure removal takes place on multiple figures
         [TestMethod]
-        public void SubtractListTwoFromListOne_ReturnList()
+        public void SubtractListTwoFromListOne_TwoValuesToBeRemoved_ReturnList()
         {
             //Arrange
             CustomList<int> customList = new CustomList<int>();
@@ -659,7 +659,30 @@ namespace CustomListTesting
             //Assert
             Assert.AreEqual(expectedList.ToString(), newList.ToString());
         }
-        //Fourth Section of subtract operator override: Removal of non-matching figures, list should come back the same
+        //Fourth Section of subtract operator override: Removal of value that appears twice in list
+        [TestMethod]
+        public void SubtractListTwoFromListOne_TwoValuesToBeRemoveAreTheSame_ReturnList()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            CustomList<int> customList2 = new CustomList<int>();
+            CustomList<int> newList = new CustomList<int>();
+            CustomList<int> expectedList = new CustomList<int>();
+
+            //Act
+            customList.Add(5); customList.Add(3); customList.Add(3); customList.Add(3); customList.Add(4); customList.Add(3); customList.Add(5); customList.Add(6);
+            customList2.Add(2); customList2.Add(3);
+            expectedList.Add(5);
+            expectedList.Add(4);
+            expectedList.Add(5);
+            expectedList.Add(6);
+
+            newList = customList - customList2;
+
+            //Assert
+            Assert.AreEqual(expectedList.ToString(), newList.ToString());
+        }
+        //Fifth Section of subtract operator override: Removal of non-matching figures, list should come back the same
         [TestMethod]
         public void SubtractTwoList_NoValuesMatch_ReturnList()
         {
