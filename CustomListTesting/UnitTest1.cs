@@ -594,30 +594,96 @@ namespace CustomListTesting
             newList = customList + customList2;
             Console.WriteLine(newList[6]);
         }
-        //First Section of subtract operator override: Ensure spot where removal takes place is now the next correct figure
-        //[TestMethod]
-        //public void SubtractListTwoFromListOne_ReturnList()
-        //{
-        //    //Arrange
-        //    CustomList<int> customList = new CustomList<int>();
-        //    CustomList<int> customList2 = new CustomList<int>();
-        //    CustomList<int> newList = new CustomList<int>();
-        //    CustomList<int> expectedList = new CustomList<int>();
+        //First Section of subtract operator override: Ensure whole list changed adequately after removal
+        [TestMethod]
+        public void SubtractListTwoFromListOne_ReturnList()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            CustomList<int> customList2 = new CustomList<int>();
+            CustomList<int> newList = new CustomList<int>();
+            CustomList<int> expectedList = new CustomList<int>();
 
-        //    //Act
-        //    customList.Add(1); customList.Add(2); customList.Add(3); customList.Add(4); customList.Add(5); customList.Add(6);
-        //    customList2.Add(10); customList2.Add(3); customList2.Add(12);
-        //    expectedList.Add(1);
-        //    expectedList.Add(2);
-        //    expectedList.Add(4);
-        //    expectedList.Add(5);
-        //    expectedList.Add(6);
+            //Act
+            customList.Add(1); customList.Add(2); customList.Add(3); customList.Add(4); customList.Add(5); customList.Add(6);
+            customList2.Add(10); customList2.Add(3); customList2.Add(12);
+            expectedList.Add(1);
+            expectedList.Add(2);
+            expectedList.Add(4);
+            expectedList.Add(5);
+            expectedList.Add(6);
 
-        //    newList = customList - customList2;
+            newList = customList - customList2;
 
-        //    //Assert
-        //    Assert.AreEqual(expectedList.ToString(), newList.ToString());
-        //}
+            //Assert
+            Assert.AreEqual(expectedList.ToString(), newList.ToString());
+        }
+        //Second Section of subtract operator override: Ensure spot where removal takes place and return adjusted count
+        [TestMethod]
+        public void SubtractListTwoFromListOne_ReturnCount()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            CustomList<int> customList2 = new CustomList<int>();
+            CustomList<int> newList = new CustomList<int>();
+
+            //Act
+            customList.Add(1); customList.Add(2); customList.Add(3); customList.Add(4); customList.Add(5); customList.Add(6);
+            customList2.Add(10); customList2.Add(3); customList2.Add(12);
+
+            newList = customList - customList2;
+
+            //Assert
+            Assert.AreEqual(5, newList.Count);
+        }
+        //Third Section of subtract operator override: Removal of more than one figure to make sure removal takes place on multiple figures
+        [TestMethod]
+        public void SubtractListTwoFromListOne_ReturnList()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            CustomList<int> customList2 = new CustomList<int>();
+            CustomList<int> newList = new CustomList<int>();
+            CustomList<int> expectedList = new CustomList<int>();
+
+            //Act
+            customList.Add(1); customList.Add(2); customList.Add(3); customList.Add(4); customList.Add(5); customList.Add(6);
+            customList2.Add(2); customList2.Add(3);
+            expectedList.Add(1);
+            expectedList.Add(4);
+            expectedList.Add(5);
+            expectedList.Add(6);
+
+            newList = customList - customList2;
+
+            //Assert
+            Assert.AreEqual(expectedList.ToString(), newList.ToString());
+        }
+        //Fourth Section of subtract operator override: Removal of non-matching figures, list should come back the same
+        [TestMethod]
+        public void SubtractTwoList_NoValuesMatch_ReturnList()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            CustomList<int> customList2 = new CustomList<int>();
+            CustomList<int> newList = new CustomList<int>();
+            CustomList<int> expectedList = new CustomList<int>();
+
+            //Act
+            customList.Add(1); customList.Add(2); customList.Add(3); customList.Add(4); customList.Add(5); customList.Add(6);
+            customList2.Add(10); customList2.Add(20); customList2.Add(12);
+            expectedList.Add(1);
+            expectedList.Add(2);
+            expectedList.Add(3);
+            expectedList.Add(4);
+            expectedList.Add(5);
+            expectedList.Add(6);
+
+            newList = customList - customList2;
+
+            //Assert
+            Assert.AreEqual(expectedList.ToString(), newList.ToString());
+        }
         [TestMethod]
         public void TestMethodTemplate()
         {
