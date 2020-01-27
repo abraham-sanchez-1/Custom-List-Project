@@ -277,17 +277,14 @@ namespace CustomListTesting
         {
             //Arrange
             CustomList<int> customList = new CustomList<int>();
-            int firstValue = 1;
-            int secondValue = 2;
-            int thirdValue = 3;
             bool value;
             bool expectedValue = true;
 
             //Act
-            customList.Add(firstValue);
-            customList.Add(secondValue);
-            customList.Add(thirdValue);
-            value = customList.Remove(secondValue);
+            customList.Add(1);
+            customList.Add(2);
+            customList.Add(3);
+            value = customList.Remove(2);
 
             //Assert
             Assert.AreEqual(expectedValue, value);
@@ -318,17 +315,14 @@ namespace CustomListTesting
         {
             //Arrange
             CustomList<int> customList = new CustomList<int>();
-            int firstValue = 1;
-            int secondValue = 2;
-            int thirdValue = 3;
             int expectedValue = 3;
             int actualValue;
 
             //Act
-            customList.Add(firstValue);
-            customList.Add(secondValue);
-            customList.Add(thirdValue);
-            customList.Remove(secondValue);
+            customList.Add(1);
+            customList.Add(2);
+            customList.Add(3);
+            customList.Remove(2);
             actualValue = customList[1];
 
             //Assert
@@ -362,16 +356,13 @@ namespace CustomListTesting
         {
             //Arrange
             CustomList<int> customList = new CustomList<int>();
-            int firstValue = 1;
-            int secondValue = 2;
-            int thirdValue = 3;
             int actualValue;
 
             //Act
-            customList.Add(firstValue);
-            customList.Add(secondValue);
-            customList.Add(thirdValue);
-            customList.Remove(secondValue);
+            customList.Add(1);
+            customList.Add(2);
+            customList.Add(3);
+            customList.Remove(2);
             actualValue = customList[2];
 
             //Assert
@@ -509,8 +500,6 @@ namespace CustomListTesting
             CustomList<int> newList = new CustomList<int>();
             CustomList<int> expectedList = new CustomList<int>();
             
-            
-            int actual;
             //Act
             customList.Add(1);
             customList.Add(2);
@@ -528,8 +517,107 @@ namespace CustomListTesting
             newList = customList + customList2;
 
             //Assert
-            Assert.AreEqual(expectedList, newList);
+            Assert.AreEqual(expectedList.ToString(), newList.ToString());
         }
+        //Second Section of plus operator override: When adding two lists of unequal size, make sure to return correct tostring()
+        [TestMethod]
+        public void AddTwoIntLists_ListAreNotEqualInSize_ReturnConcatenatedList()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            CustomList<int> customList2 = new CustomList<int>();
+            CustomList<int> newList = new CustomList<int>();
+            CustomList<int> expectedList = new CustomList<int>();
+
+            //Act
+            customList.Add(1);
+            customList.Add(2);
+            customList2.Add(4);
+            customList2.Add(5);
+            customList2.Add(6);
+            expectedList.Add(1);
+            expectedList.Add(2);
+            expectedList.Add(4);
+            expectedList.Add(5);
+            expectedList.Add(6);
+
+            newList = customList + customList2;
+
+            //Assert
+            Assert.AreEqual(expectedList.ToString(), newList.ToString());
+        }
+        //Third Section of plus operator override: When adding two lists of unequal size, make sure to return correct count
+        [TestMethod]
+        public void AddTwoIntLists_ListAreNotEqualInSize_ReturnCount()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            CustomList<int> customList2 = new CustomList<int>();
+            CustomList<int> newList = new CustomList<int>();
+            CustomList<int> expectedList = new CustomList<int>();
+
+            //Act
+            customList.Add(1);
+            customList.Add(2);
+            customList2.Add(4);
+            customList2.Add(5);
+            customList2.Add(6);
+            expectedList.Add(1);
+            expectedList.Add(2);
+            expectedList.Add(4);
+            expectedList.Add(5);
+            expectedList.Add(6);
+
+            newList = customList + customList2;
+
+            //Assert
+            Assert.AreEqual(expectedList.Count, newList.Count);
+        }
+        //Fourth Section of plus operator override: Throw exception when index is not in use
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void AddTwoIntLists_CheckSpotOutideOfList_ThrowException()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            CustomList<int> customList2 = new CustomList<int>();
+            CustomList<int> newList = new CustomList<int>();
+
+            //Act
+            customList.Add(1);
+            customList.Add(2);
+            customList.Add(3);
+            customList2.Add(4);
+            customList2.Add(5);
+            customList2.Add(6);
+
+            newList = customList + customList2;
+            Console.WriteLine(newList[6]);
+        }
+        //First Section of subtract operator override: Ensure spot where removal takes place is now the next correct figure
+        //[TestMethod]
+        //public void SubtractListTwoFromListOne_ReturnList()
+        //{
+        //    //Arrange
+        //    CustomList<int> customList = new CustomList<int>();
+        //    CustomList<int> customList2 = new CustomList<int>();
+        //    CustomList<int> newList = new CustomList<int>();
+        //    CustomList<int> expectedList = new CustomList<int>();
+
+        //    //Act
+        //    customList.Add(1); customList.Add(2); customList.Add(3); customList.Add(4); customList.Add(5); customList.Add(6);
+        //    customList2.Add(10); customList2.Add(3); customList2.Add(12);
+        //    expectedList.Add(1);
+        //    expectedList.Add(2);
+        //    expectedList.Add(4);
+        //    expectedList.Add(5);
+        //    expectedList.Add(6);
+
+        //    newList = customList - customList2;
+
+        //    //Assert
+        //    Assert.AreEqual(expectedList.ToString(), newList.ToString());
+        //}
         [TestMethod]
         public void TestMethodTemplate()
         {

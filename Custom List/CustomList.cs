@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Custom_List
 {
-    public class CustomList<T>
+    public class CustomList<T> //:IEnumberable use system:collections not generic
     {
         private int count;
         public int Count
@@ -23,7 +23,7 @@ namespace Custom_List
         {
             get
             {
-                if (i>count-1 || i<0)
+                if (i>=count || i<0)
                 {
                     throw new System.ArgumentOutOfRangeException();
                 }
@@ -34,8 +34,7 @@ namespace Custom_List
             }
             set
             {
-
-                if (i > count || i < 0)
+                if (i >= count || i < 0)
                 {
                     throw new System.ArgumentOutOfRangeException();
                 }
@@ -44,8 +43,7 @@ namespace Custom_List
                     array[i] = value;
                 }
             }
-        }
-           
+        }         
         private int capacity;
         public int Capacity
         {
@@ -63,8 +61,7 @@ namespace Custom_List
             count = 0;
             capacity = 5;
             array = new T[capacity];
-        }
-        
+        }        
         public void Add(T item)
         {
             array[count] = item;
@@ -100,44 +97,39 @@ namespace Custom_List
         }
         public void Concatenate(int indexToBeRemoved)
         {
-            T[] placeholder = new T[capacity];
-            for (int j = 0; j < indexToBeRemoved; j++)
+            CustomList<T> placeHolder = new CustomList<T>();
+            for (int i = 0; i < indexToBeRemoved; i++)
             {
-                placeholder[j] = array[j];
+                placeHolder.Add(array[i]);
             }
-            int upperLimit = Count - 1;
-            for (int i = indexToBeRemoved; i < upperLimit; i++)
+            for (int i = indexToBeRemoved; i < count-1; i++)
             {
-                placeholder[i] = array[i+1];
+                placeHolder.Add(array[i+1]);
             }
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < placeHolder.count; i++)
             {
-                array[i] = placeholder[i];
+                array[i] = placeHolder[i];
             }
-
         }
         public override string ToString()
-        {
-            
+        {       
             StringBuilder newString = new StringBuilder();
             for (int i = 0; i < count; i++)
             {
                 newString.Append(array[i]);
             }
-            
             return newString.ToString();
-
         }
-        public static CustomList<T>  operator +(CustomList<T> listOne, CustomList<T> listTwo) 
+        public static CustomList<T>  operator+(CustomList<T> listOne, CustomList<T> listTwo) 
         {
             CustomList<T> newList = new CustomList<T>();
             for (int i = 0; i < listOne.count; i++)
             {
-                newList[i] = listOne[i];
+                newList.Add(listOne[i]);
             }
             for (int i = 0; i < listTwo.count ; i++)
             {
-
+                newList.Add(listTwo[i]);
             }
 
             return newList;
