@@ -691,6 +691,53 @@ namespace CustomListTesting
             //Assert
             Assert.AreEqual(expectedList.ToString(), newList.ToString());
         }
+        //First Section of Zip method:First and second list zip, checking to see 
+        [TestMethod]
+        public void ZipTwoLists_TwoListZip_ReturnNewList()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 1, 3, 5};
+            CustomList<int> customList2 = new CustomList<int>() { 2,4,6 };
+            
+            CustomList<int> expectedList = new CustomList<int>() { 1, 2, 3, 4, 5, 6 };
+
+            //Act
+            customList.Zip(customList2);
+
+            //Assert
+            Assert.AreEqual(expectedList.ToString(), customList.ToString());
+        }
+        //Second Section of Zip method:Ensure count has adequately changed after zip 
+        [TestMethod]
+        public void ZipTwoLists_TwoListZip_ReturnCount()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> customList2 = new CustomList<int>() { 2, 4, 6 };
+
+            CustomList<int> expectedList = new CustomList<int>() { 1, 2, 3, 4, 5, 6 };
+
+            //Act
+            customList.Zip(customList2);
+
+            //Assert
+            Assert.AreEqual(expectedList.Count, customList.Count);
+        }
+        //Second Section of Zip method:Ensure count has adequately changed after zip 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void ZipTwoLists_SelectOutOfRange_ThrowException()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> customList2 = new CustomList<int>() { 2, 4, 6 };
+
+            CustomList<int> expectedList = new CustomList<int>() { 1, 2, 3, 4, 5, 6 };
+
+            //Act
+            customList.Zip(customList2);
+            Console.WriteLine(customList[6]);
+        }
         [TestMethod]
         public void TestMethodTemplate()
         {

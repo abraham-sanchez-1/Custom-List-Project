@@ -124,6 +124,14 @@ namespace Custom_List
             }
             return newString.ToString();
         }
+        public void Zip(CustomList<T> list)
+        {
+            for (int i = 0; i < length; i++)
+            {
+
+            }
+
+        }
         public static CustomList<T>  operator+(CustomList<T> listOne, CustomList<T> listTwo) 
         {
             CustomList<T> newList = new CustomList<T>();
@@ -139,18 +147,14 @@ namespace Custom_List
             return newList;
 
         }
-        public static CustomList<T> operator -(CustomList<T> listOne, CustomList<T> listTwo)
+        public static CustomList<T> operator - (CustomList<T> listOne, CustomList<T> listTwo)
         {
             CustomList<T> newList = new CustomList<T>();
             for (int i = 0; i < listOne.count; i++)
             {
                 for (int j = 0; j < listTwo.count; j++)
                 {
-                    listOne.Remove(listTwo[j]);
-                //    if (listOne[i].Equals(listTwo[j]))
-                //    {
-                //        listOne.Remove(listTwo[j]);
-                //    }
+                    listOne.Remove( listTwo[j] );
                 }
             }
             return listOne;
