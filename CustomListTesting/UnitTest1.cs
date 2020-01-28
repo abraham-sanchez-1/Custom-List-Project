@@ -738,6 +738,34 @@ namespace CustomListTesting
             customList.Zip(customList2);
             Console.WriteLine(customList[6]);
         }
+        //First Section of IntSort method:Return correct list that has properly sorted
+        [TestMethod]
+        public void SortIntList_LargeToSmall_ReturnList()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 5, 3, 4, 6, 1, 2 };
+            CustomList<int> expectedList = new CustomList<int>() { 6, 5, 4, 3, 2, 1 };
+
+            //Act
+            customList.Sort();
+
+            //Assert
+            Assert.AreEqual(expectedList.ToString(), customList.ToString());
+        }
+        //First Section of IntSort method:Return correct list that has properly sorted
+        [TestMethod]
+        public void SortIntList_LargeToSmall_ReturnCount()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 5, 3, 4, 6, 1, 2 };
+            int count = 6;
+
+            //Act
+            customList.Sort();
+
+            //Assert
+            Assert.AreEqual(count, customList.Count);
+        }
         [TestMethod]
         public void TestMethodTemplate()
         {

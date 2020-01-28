@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Custom_List
 {
-    public class CustomList<T> : IEnumerable
+    public class CustomList<T> : IEnumerable where T: IComparable
     {
         private int count;
         public int Count
@@ -82,6 +82,7 @@ namespace Custom_List
                     array[i] = placeholder[i];
                 }
         }
+        //Single responsibility usage, remove method 
         public bool Remove(T item)
         {
             for (int i = 0; i < count; i++)
@@ -115,6 +116,34 @@ namespace Custom_List
             }
             
         }
+        //Sort method addition
+        public void Sort() 
+        {
+            int i, j;
+            int N = count;
+            for (j= count- 1; j > 0; j--)
+            {
+                for (i = 0; i < j; i++)
+                {
+                    int comparer = 0;
+                    comparer = array[i].CompareTo(array[i + 1]);
+                    if (comparer <=0)
+                    {
+                        Exchange(array, i, i + 1);
+                    }
+                }
+
+            }
+        }
+        public static void Exchange(T[] list, int m, int n)
+        {
+            T placeholder;
+
+            placeholder = list[m];
+            list[m] = list[n];
+            list[n] = placeholder;
+
+        }
         public override string ToString()
         {       
             StringBuilder newString = new StringBuilder();
@@ -126,7 +155,6 @@ namespace Custom_List
         }
         public void Zip(CustomList<T> list)
         {
-            int totalListsCount = count + list.count;
             CustomList<T> placeholder = new CustomList<T>();
             for (int i = 0; i < (count > list.Count ?  count : list.Count); i++)
             {
@@ -142,7 +170,6 @@ namespace Custom_List
             count = placeholder.Count;
 
         }
-
         public T[] ToArray()
         {
             return array;
