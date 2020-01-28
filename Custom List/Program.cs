@@ -10,6 +10,8 @@ namespace Custom_List
     {
         static void Main(string[] args)
         {
+            List<int> nums = new List<int>() { 1, 2, 3 };
+            int[] numArray = nums.ToArray();
             //instantiation of new custom list of type int
             CustomList<int> firstList = new CustomList<int>() { 4,5,6,7,5,20,5,20};
 

@@ -126,11 +126,26 @@ namespace Custom_List
         }
         public void Zip(CustomList<T> list)
         {
-            for (int i = 0; i < length; i++)
+            int totalListsCount = count + list.count;
+            CustomList<T> placeholder = new CustomList<T>();
+            for (int i = 0; i < (count > list.Count ?  count : list.Count); i++)
             {
+                if(i < count)
+                    placeholder.Add(array[i]);
+
+                if(i < list.Count)
+                    placeholder.Add(list[i]); 
 
             }
 
+            array = placeholder.ToArray();
+            count = placeholder.Count;
+
+        }
+
+        public T[] ToArray()
+        {
+            return array;
         }
         public static CustomList<T>  operator+(CustomList<T> listOne, CustomList<T> listTwo) 
         {
